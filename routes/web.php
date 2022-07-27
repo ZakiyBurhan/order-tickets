@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -22,6 +24,9 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function() {
     return view('home');
 });
+
+Route::get('/room', [RoomController::class, 'index']);
+Route::get('/facility', [FacilityController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
