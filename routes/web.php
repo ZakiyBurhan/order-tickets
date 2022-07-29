@@ -36,12 +36,19 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/administrator', function() {
     return view('administrator.index');
 });
-Route::get('/kamar', function() {
-    return view('administrator.kamar');
-});
 Route::get('/fasilitas-kamar', function() {
     return view('administrator.fasilitas-kamar');
 });
 Route::get('/fasilitas-umum', function() {
     return view('administrator.fasilitas-umum');
 });
+Route::get('/resepsionis', function() {
+    return view('resepsionis.index');
+});
+Route::get('/resepsionis-fasilitas-kamar', function() {
+    return view('resepsionis.fasilitas-kamar');
+});
+Route::get('/resepsionis-fasilitas-umum', function() {
+    return view('resepsionis.fasilitas-umum');
+});
+
