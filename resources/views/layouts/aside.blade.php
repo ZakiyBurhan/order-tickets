@@ -23,19 +23,19 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="/kamar" class="nav-link active {{ Request::is('kamar' ? 'active' : '') }}">
+                <a href="/kamar" class="nav-link active ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Kamar<i class="right fas fa-angle-left"></i></p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/fasilitas-kamar" class="nav-link active {{ Request::is('fasilitas-kamar' ? 'active' : '') }}">
+                <a href="/fasilitas-kamar" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Fasilitas Kamar</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/fasilitas-umum" class="nav-link active {{ Request::is('fasilitas-umum' ? 'active' : '') }}">
+                <a href="/fasilitas-umum" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>Fasilitas Umum</p>
                 </a>
