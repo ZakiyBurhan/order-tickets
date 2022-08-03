@@ -6,7 +6,7 @@
     <div class="col-lg-8">
         <main class="form-signin">
             <h1 class="h3 mb-3 fw-normal text-center mt-2">Please Login</h1>
-            <form action="/dashboard" method="get">
+            <form action="/login" method="post">
               @csrf
               <div class="form-floating">
                 <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" autofocus required>
