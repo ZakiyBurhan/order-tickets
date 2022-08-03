@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LoginController;
@@ -30,7 +32,10 @@ Route::get('/room', [RoomController::class, 'index']);
 Route::get('/facility', [FacilityController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/administrator', function() {
