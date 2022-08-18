@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('/fasilitas', App\Http\Controllers\Api\FasilitasController::class);
+Route::apiResource('/kamars', App\Http\Controllers\Api\KamarController::class);
