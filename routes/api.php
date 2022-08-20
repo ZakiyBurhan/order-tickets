@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\KamarController;
+use App\Http\Controllers\Api\FasilitasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/fasilitas', App\Http\Controllers\Api\FasilitasController::class);
-Route::apiResource('/kamars', App\Http\Controllers\Api\KamarController::class);
+Route::apiResource('/fasilitas', FasilitasController::class);
+Route::apiResource('/kamars', KamarController::class);

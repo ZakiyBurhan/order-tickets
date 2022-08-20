@@ -13,16 +13,15 @@ class FasilitasController extends Controller
 {
     public function index()
     {
-        $fasilitas = Fasilitas::latest()->paginate(5);
+        $fasilitass = Fasilitas::latest()->paginate(5);
 
-        return new FasilitasResource(true, 'List Data Fasilitas', $fasilitas);
+        return new FasilitasResource(true, 'List Data Fasilitas', $fasilitass);
     } 
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
-            'image' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:5000',
             'kategori' => 'required'
         ]);
 
@@ -31,13 +30,8 @@ class FasilitasController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        // upload image
-        $image = $request->file('image');
-        $image->storeAs('public/fasilitas', $image->hashName());
-
         // create fasilitas
         $fasilitas = Fasilitas::create([
-            'image'     => $image->hashName(),
             'nama'      => $request->nama,
             'kategori'  => $request->kategori,
         ]);
@@ -45,12 +39,13 @@ class FasilitasController extends Controller
         return new FasilitasResource(true, 'Data Fasilitas Berhasil Ditambahkan!', $fasilitas);
     }
 
-    public function show(Fasilitas $fasilitas)
+    public function show(Fasilitas $fasilitas, $id)
     {
-        return new FasilitasResource(true, 'Data Fasilitas Ditemukan!', $fasilitas);
+        $fasilitas = Fasilitas::find($id);
+        return new FasilitasResource(true, 'Data Fasilitas Berhasil Ditambahkan!', $fasilitas);
     }
 
-    public function update(Request $request, Fasilitas $fasilitas)
+    public function update(Request $request, Fasilitas $fasilitas, $id)
     {
         //define validation rules
         $validator = Validator::make($request->all(), [
@@ -62,42 +57,20 @@ class FasilitasController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
+        
+        //update post without image
+        $fasilitas->update([
+            'nama'       => $request->nama,
+            'kategori'   => $request->kategori,
+        ]);
 
-        //check if image is not empty
-        if ($request->hasFile('image')) {
-
-            //upload image
-            $image = $request->file('image');
-            $image->storeAs('public/fasilitas', $image->hashName());
-
-            //delete old image
-            Storage::delete('public/fsailitas/'.$fasilitas->image);
-
-            //update post with new image
-            $fasilitas->update([
-                'image'      => $image->hashName(),
-                'nama'       => $request->nama,
-                'kategori'   => $request->kategori,
-            ]);
-
-        } else {
-
-            //update post without image
-            $fasilitas->update([
-                'nama'       => $request->nama,
-                'kategori'   => $request->kategori,
-            ]);
-        }
-
+        $fasilitas = Fasilitas::find($id);
         //return response
         return new FasilitasResource(true, 'Data Fasilitas Berhasil Diubah!', $fasilitas);
     }
 
     public function destroy(Fasilitas $fasilitas)
     {
-        //delete image
-        Storage::delete('public/fasilitas/'.$fasilitas->image);
-
         //delete post
         $fasilitas->delete();
 
