@@ -19,6 +19,7 @@
                     <input type="date" class="form-control" placeholder=".col-4">
                 </div>
                 <label class="col-sm-2 col-from-label">Jumlah Kamar</label>
+                <label class="col-sm-2 col-from-label">Jumlah Kamar</label>
                 <div class="col-sm-1">
                     <input type="date" class="form-control" placeholder=".col-3">
                 </div>
