@@ -31,7 +31,7 @@ Route::get('/', function() {
 Route::get('/room', [RoomController::class, 'index']);
 Route::get('/facility', [FacilityController::class, 'index']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index']);

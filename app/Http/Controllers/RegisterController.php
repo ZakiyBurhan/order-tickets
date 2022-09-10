@@ -33,4 +33,4 @@ class RegisterController extends Controller
 
         return redirect('/login')->with('success', 'Registration Succesfully! Please login');
     }
-}
+}   
